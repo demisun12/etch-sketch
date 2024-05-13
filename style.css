@@ -2,10 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:800px;
-    height: 800px;
+    width:960px;
+    height: 960px;
+    margin: auto;
 }
 
 .grid-row {
@@ -21,3 +20,11 @@
     flex-grow: 1;
 }
 
+.square:hover {
+    background-color: black;
+}
+
+#number {
+    display: block;
+    margin: 20px auto;
+}
