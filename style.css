@@ -20,10 +20,11 @@
     flex-grow: 1;
 }
 
-.square:hover {
+/* .square:hover {
     background-color: black;
 }
-
+ */
+ 
 #number {
     display: block;
     margin: 20px auto;

@@ -17,16 +17,22 @@ for (let col = 0; col < 16; col++) {
  setgrid.onclick = function () {
     let choice = prompt("Enter the number of squares per side of grid");
     let gridNumber = parseInt(choice);
-    grid.innerHTML = "";
-    for (let col = 0; col < gridNumber; col++) {
-        const gridRow = document.createElement("div");
-        gridRow.setAttribute("class", "grid-row");
-        grid.appendChild(gridRow);
-        for (let row = 0; row < gridNumber; row++) {
-            const gridRowDivs = document.createElement("div");
-            gridRowDivs.setAttribute("class", "square");
-            gridRow.appendChild(gridRowDivs);
-    
+    if (gridNumber > 0 && gridNumber <= 100) {
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
         }
+        for (let col = 0; col < gridNumber; col++) {
+            const gridRow = document.createElement("div");
+            gridRow.setAttribute("class", "grid-row");
+            grid.appendChild(gridRow);
+            for (let row = 0; row < gridNumber; row++) {
+                const gridRowDivs = document.createElement("div");
+                gridRowDivs.setAttribute("class", "square");
+                gridRow.appendChild(gridRowDivs);
+        
+            }
+        }
+    } else {
+        alert("Please enter a number between 1 and 100");
     }
 }
