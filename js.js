@@ -36,3 +36,17 @@ for (let col = 0; col < 16; col++) {
         alert("Please enter a number between 1 and 100");
     }
 }
+
+function randomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + r + "," + g + "," + b + ")";
+    return bgColor
+}
+
+const square = document.querySelector(".square");
+
+square.addEventListener('mouseover', function(){
+    square.style.backgroundColor = randomColor();
+}) 
