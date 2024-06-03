@@ -2,6 +2,14 @@ const grid = document.querySelector("#grid");
 
 const setgrid = document.querySelector("#number");
 
+function randomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + r + "," + g + "," + b + ")";
+    return bgColor
+}
+
 for (let col = 0; col < 16; col++) {
     const gridRow = document.createElement("div");
     gridRow.setAttribute("class", "grid-row");
@@ -11,6 +19,22 @@ for (let col = 0; col < 16; col++) {
         gridRowDivs.setAttribute("class", "square");
         gridRow.appendChild(gridRowDivs);
 
+        let interactions = 0;
+
+        gridRowDivs.addEventListener('mouseover', function(){
+            if (interactions < 10) {
+                interactions++;
+                let opacity = interactions / 10;
+                gridRowDivs.style.backgroundColor = randomColor();
+                gridRowDivs.style.opacity = opacity;
+            }
+        });
+
+        gridRowDivs.addEventListener('mouseout', function() {
+            gridRowDivs.style.backgroundColor = '';
+            gridRowDivs.style.opacity = 1;
+            interactions = 0;
+        });
     }
 }
 
@@ -29,7 +53,21 @@ for (let col = 0; col < 16; col++) {
                 const gridRowDivs = document.createElement("div");
                 gridRowDivs.setAttribute("class", "square");
                 gridRow.appendChild(gridRowDivs);
+                
+                gridRowDivs.addEventListener('mouseover', function(){
+                    if (interactions < 10) {
+                        interactions++;
+                        let opacity = interactions / 10;
+                        gridRowDivs.style.backgroundColor = randomColor();
+                        gridRowDivs.style.opacity = opacity;
+                    }
+                });
         
+                gridRowDivs.addEventListener('mouseout', function() {
+                    gridRowDivs.style.backgroundColor = '';
+                    gridRowDivs.style.opacity = 1;
+                    interactions = 0;
+                });
             }
         }
     } else {
@@ -37,16 +75,3 @@ for (let col = 0; col < 16; col++) {
     }
 }
 
-function randomColor() {
-    var r = Math.floor(Math.random() * 256);
-    var g = Math.floor(Math.random() * 256);
-    var b = Math.floor(Math.random() * 256);
-    var bgColor = "rgb(" + r + "," + g + "," + b + ")";
-    return bgColor
-}
-
-const square = document.querySelector(".square");
-
-square.addEventListener('mouseover', function(){
-    square.style.backgroundColor = randomColor();
-}) 
